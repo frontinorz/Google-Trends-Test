@@ -41,10 +41,17 @@ const app = new Vue({
             {
                 name: 'loading'
             }
-        ]
+        ],
+        map: {},
     },
     created: function () {
         this.datainit();
+    },
+    mounted: function(){
+        this.initmap();
+    },
+    updated: function () {
+        this.createMarker(this.bikedata);
     },
     methods: {
         datainit: function () {
@@ -61,14 +68,36 @@ const app = new Vue({
             return data.map(data => {
                 return data = {
                     name: data.站點名稱,
-                    lat: data.緯度,
-                    lng: data.經度,
+                    lat: parseFloat(data.緯度),
+                    lng: parseFloat(data.經度),
                     imgurl: data.圖片URL,
                     position: data.站點位置,
                     bikenum: data.車柱數
                 };
             });
-        }
+        },
+        initmap: function () {
+            let url = {
+                lat: 24.7983301,
+                lng: 120.9673986
+            };
+            let options = {
+                zoom: 16,
+                center: url
+            };
+            this.map = new google.maps.Map(document.getElementById('map'), options);
+        },
+        createMarker: function (datas) {
+            const self = this;
+            datas.forEach(data => {
+                let lat = data.lat;
+                let lng = data.lng;
+                let marker = new google.maps.Marker({
+                    position: {lat,lng},
+                    map: self.map
+                });
+            });
+        },
     }
 });
 
