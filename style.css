@@ -1,0 +1,23 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+p {
+  margin: 0; }
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer; }
+
+* {
+  box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  background: #ccc; }
