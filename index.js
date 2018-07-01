@@ -43,6 +43,8 @@ const app = new Vue({
             }
         ],
         map: {},
+        infowindow: {},
+        contentString: `<div><h1>Some text here</h1></div>`
     },
     created: function () {
         this.datainit();
@@ -66,7 +68,7 @@ const app = new Vue({
         },
         datatrans: function (data) {
             return data.map(data => {
-                return data = {
+                return {
                     name: data.站點名稱,
                     lat: parseFloat(data.緯度),
                     lng: parseFloat(data.經度),
@@ -77,6 +79,7 @@ const app = new Vue({
             });
         },
         initmap: function () {
+            const self = this;
             let url = {
                 lat: 24.7983301,
                 lng: 120.9673986
@@ -86,6 +89,10 @@ const app = new Vue({
                 center: url
             };
             this.map = new google.maps.Map(document.getElementById('map'), options);
+            self.infowindow = new google.maps.InfoWindow({
+                content : self.contentString,
+                maxWidth: 350
+            });
         },
         createMarker: function (datas) {
             const self = this;
@@ -94,10 +101,48 @@ const app = new Vue({
                 let lng = data.lng;
                 let marker = new google.maps.Marker({
                     position: {lat,lng},
-                    map: self.map
+                    map: self.map,
+                    title: data.name
                 });
+                marker.addListener('click', function () {
+                    let html =
+                        `<div class="map__info">
+                            <div class="map__info__title">${data.name}</div>
+                        </div>`;
+
+                    self.infowindow.setContent(html);
+                    self.infowindow.open(self.map, marker);
+                })
             });
+
         },
+        myPosition: function () {
+            const self = this;
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition((position)=>{
+                    let pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    self.infowindow.setPosition(pos);
+                    self.infowindow.setContent('我在這裡!');
+                    self.infowindow.open(self.map);
+                    //self.map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, self.infowindow, self.map.getCenter());
+                });
+            }else{
+                handleLocationError(false, self.infowindow, self.map.getCenter());
+            }
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(self.map);
+            }
+        }
     }
 });
 

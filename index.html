@@ -10,10 +10,20 @@
 </head>
 <body>
   <div id="app">
+    <button class="btn-setPosition" v-on:click="myPosition()">我的位置</button>
     <div class="map" id="map"></div>
-    <ul>
-      <li v-for="n in bikedata">
-        <h1 class="name">{{n.name}}</h1>
+    <ul class="wrapper">
+      <li class="card" v-for="n in bikedata">
+        <div class="card__img__wrapper">
+          <div class="card__overlay">
+            <button>前往地圖</button>
+          </div><img class="card__img" :src="n.imgurl">
+        </div>
+        <div class="card__info">
+          <div class="card__title">{{n.name}}</div>
+          <div class="card__position">{{n.position}}</div>
+          <div class="card__bikenum">車柱數 : {{n.bikenum}}</div>
+        </div>
       </li>
     </ul>
   </div>

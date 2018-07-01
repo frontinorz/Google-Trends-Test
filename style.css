@@ -1,3 +1,4 @@
+@charset "UTF-8";
 ul {
   margin: 0;
   padding: 0;
@@ -20,9 +21,108 @@ button {
 
 body, html {
   width: 100%;
-  background: #ccc; }
+  margin: 0;
+  padding: 20px 0px;
+  font-family: '微軟正黑體'; }
 
 .map {
-  width: 500px;
+  width: 100%;
   height: 500px;
   background: #aaa; }
+
+.info {
+  display: grid; }
+
+* {
+  box-sizing: border-box; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.wrapper {
+  max-width: calc(90%-20px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 20px 200px;
+  grid-gap: 20px; }
+  @media (min-width: 1440px) {
+    .wrapper {
+      padding: 20px 200px; } }
+  @media (max-width: 1280px) {
+    .wrapper {
+      padding: 20px 100px; } }
+  @media (max-width: 900px) {
+    .wrapper {
+      padding: 20px 50px;
+      grid-template-columns: minmax(300px, 1fr); } }
+  @media (max-width: 599px) {
+    .wrapper {
+      padding: 20px 20px; } }
+
+.card {
+  display: grid;
+  border-bottom: 5px solid #eaa81b;
+  overflow: hidden;
+  text-align: center; }
+  .card:hover .card__overlay {
+    transform: translateY(0%); }
+  @media (max-width: 900px) {
+    .card {
+      grid-template-columns: 1fr 1fr;
+      border-bottom: none;
+      border-right: 5px solid #eaa81b; } }
+
+.card__info {
+  padding: 20px;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa; }
+  @media (max-width: 900px) {
+    .card__info {
+      border: 1px solid #aaa;
+      text-align: left; } }
+
+.card__img__wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%; }
+  @media (max-width: 900px) {
+    .card__img__wrapper {
+      height: 100%; } }
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #aaa; }
+
+.card__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(234, 168, 27, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+  transform: translateY(100%); }
+  .card__overlay button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    font-weight: 900; }
+
+.card__title {
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 900; }
+
+.card__position {
+  margin-bottom: 10px; }
+
+.map__info__title {
+  font-size: 1.2rem; }

@@ -9,10 +9,18 @@ head
     //script(src='index.js')
 body
     #app
+        button.btn-setPosition(v-on:click="myPosition()") 我的位置
         #map.map
-        ul
-            li(v-for="n in bikedata")
-                h1.name {{n.name}}
+        ul.wrapper
+            li.card(v-for="n in bikedata")
+                .card__img__wrapper
+                    .card__overlay
+                        button 前往地圖
+                    img.card__img(:src="n.imgurl")
+                .card__info
+                    .card__title {{n.name}}
+                    .card__position {{n.position}}
+                    .card__bikenum 車柱數 : {{n.bikenum}}
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')

@@ -1,3 +1,10 @@
+$color-yellow: #eaa81b
+
+$padding-desktop: 100px
+$padding-desktop-lg: 200px
+$padding-tablet: 50px
+$padding-phone: 20px
+
 @mixin breakpoint($point)
     @if $point == desktop-lg
         @media (min-width: 1440px)
@@ -29,9 +36,99 @@ button
 
 body,html
     width: 100%
-    background: #ccc
+    margin: 0
+    padding: 20px 0px
+    font-family: '微軟正黑體'
+
 
 .map
-    width: 500px
+    width: 100%
     height: 500px
     background: #aaa
+.info
+    display: grid
+*
+    box-sizing: border-box
+ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+.wrapper
+    max-width: calc(90%-20px)
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    padding: 20px $padding-desktop-lg
+    grid-gap: 20px
+    @include breakpoint(desktop-lg)
+        padding: 20px $padding-desktop-lg
+    @include breakpoint(desktop)
+        padding: 20px $padding-desktop
+    @include breakpoint(tablet)
+        padding: 20px $padding-tablet
+        grid-template-columns: minmax(300px, 1fr)
+    @include breakpoint(phone)
+        padding: 20px $padding-phone
+
+.card
+    display: grid
+    border-bottom: 5px solid $color-yellow
+    overflow: hidden
+    text-align: center
+    &:hover
+        .card__overlay
+            transform: translateY(0%)
+    @include breakpoint(tablet)
+        grid-template-columns: 1fr 1fr
+        border-bottom: none
+        border-right: 5px solid $color-yellow
+.card__info
+    padding: 20px
+    border-left: 1px solid #aaa
+    border-right: 1px solid #aaa
+    @include breakpoint(tablet)
+        border: 1px solid #aaa
+        text-align: left
+
+.card__img__wrapper
+    position: relative
+    overflow: hidden
+    height: 300px
+    width: 100%
+    @include breakpoint(tablet)
+        height: 100%
+.card__img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    background: #aaa
+    //before,after element not working on <img> tag
+.card__overlay
+    position: absolute
+    width: 100%
+    height: 100%
+    background: rgba(234,168,27,0.5)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: transform 0.3s
+    transform: translateY(100%)
+    button
+        border: none
+        background: transparent
+        cursor: pointer
+        letter-spacing: 2px
+        font-size: 1.2rem
+        font-weight: 900
+
+.card__title
+    margin-bottom: 10px
+    font-size: 1.6rem
+    font-weight: 900
+.card__position
+    margin-bottom: 10px
+.card__bikenum
+
+
+.map__info__title
+    font-size: 1.2rem
