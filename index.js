@@ -102,7 +102,17 @@ const app = new Vue({
                 let marker = new google.maps.Marker({
                     position: {lat,lng},
                     map: self.map,
-                    title: data.name
+                    title: data.name,
+                    icon: {
+                        url: 'images/bikeLocate.png',
+                        scaledSize: new google.maps.Size(60, 60),
+                        labelOrigin: new google.maps.Point(30, -10)
+                    },
+                    label: {
+                        text: data.name,
+                        color: 'black',
+                        fontSize: '1.2rem',
+                        fontWeight: 'bold' }
                 });
                 marker.addListener('click', function () {
                     let html =
@@ -112,7 +122,7 @@ const app = new Vue({
 
                     self.infowindow.setContent(html);
                     self.infowindow.open(self.map, marker);
-                })
+                });
             });
 
         },
@@ -128,7 +138,7 @@ const app = new Vue({
                     self.infowindow.setPosition(pos);
                     self.infowindow.setContent('我在這裡!');
                     self.infowindow.open(self.map);
-                    //self.map.setCenter(pos);
+                    self.map.setCenter(pos);
                 }, function () {
                     handleLocationError(true, self.infowindow, self.map.getCenter());
                 });
