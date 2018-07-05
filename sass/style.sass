@@ -1,4 +1,5 @@
 $color-yellow: #eaa81b
+$color-red: #fe5f55
 
 $padding-desktop: 100px
 $padding-desktop-lg: 200px
@@ -31,44 +32,92 @@ button
     outline: none
     border: none
     cursor: pointer
+input
+    outline: none
 *
     box-sizing: border-box
 
 body,html
     width: 100%
     margin: 0
-    padding: 20px 0px
     font-family: '微軟正黑體'
+    font-size: 16px
+    @include breakpoint(desktop-lg)
+        font-size: 16px
+    @include breakpoint(phone)
+        font-size: 12px
 
+*
+    box-sizing: border-box
+
+
+header
+    width: 100%
+    height: 30vh
+    background: $color-yellow
+    text-align: center
+    display: grid
+    grid-template-rows: 2fr 1fr
+    align-items: center
+    justify-content: center
+.inputrow
+    display: grid
+    align-self: start
+    grid-template-columns: 1fr 4fr 1fr
+    width: 100%
+    height: 35px
+    overflow: hidden
+    border-radius: 5px
+.btn-setPosition
+    font-size: 1.2rem
+    display: flex
+    align-items: center
+    justify-content: center
+.icon-target
+    font-size: 1.5rem
+.btn-search
+    font-size: 1.2rem
+    color: #bbb
+    transition: color 0.3s
+    cursor: initial
+.input-search
+    height: 100%
+    padding: 5px 10px
+    font-size: 1.2rem
+.maintitle
+    font-size: 3rem
+    font-weight: 900
+    letter-spacing: 2px
+.subtitle
+    font-size: 2rem
+    font-weight: 900
+    letter-spacing: 2px
+    margin-bottom: 50px
 
 .map
     width: 100%
-    height: 500px
+    height: 70vh
     background: #aaa
 .info
     display: grid
-*
-    box-sizing: border-box
-ul
-    list-style: none
-    margin: 0
-    padding: 0
-
-.wrapper
+.station
     max-width: calc(90%-20px)
+    padding: 50px $padding-desktop-lg
+    text-align: center
+    @include breakpoint(desktop-lg)
+        padding: 50px $padding-desktop-lg
+    @include breakpoint(desktop)
+        padding: 50px $padding-desktop
+    @include breakpoint(tablet)
+        padding: 50px $padding-tablet
+    @include breakpoint(phone)
+        padding: 50px $padding-phone
+.wrapper
     display: grid
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
-    padding: 20px $padding-desktop-lg
     grid-gap: 20px
-    @include breakpoint(desktop-lg)
-        padding: 20px $padding-desktop-lg
-    @include breakpoint(desktop)
-        padding: 20px $padding-desktop
     @include breakpoint(tablet)
-        padding: 20px $padding-tablet
         grid-template-columns: minmax(300px, 1fr)
-    @include breakpoint(phone)
-        padding: 20px $padding-phone
 
 .card
     display: grid
@@ -77,9 +126,10 @@ ul
     text-align: center
     &:hover
         .card__overlay
-            transform: translateY(0%)
+            background: rgba(0,0,0,0.2)
     @include breakpoint(tablet)
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 2fr
+        height: 200px
         border-bottom: none
         border-right: 5px solid $color-yellow
 .card__info
@@ -89,6 +139,7 @@ ul
     @include breakpoint(tablet)
         border: 1px solid #aaa
         text-align: left
+        padding: 10px
 
 .card__img__wrapper
     position: relative
@@ -107,23 +158,26 @@ ul
     position: absolute
     width: 100%
     height: 100%
-    background: rgba(234,168,27,0.5)
+    background: rgba(0,0,0,0.0)
     display: flex
     align-items: center
     justify-content: center
-    transition: transform 0.3s
-    transform: translateY(100%)
+    transition: background 0.3s
     button
+        position: absolute
+        outline: none
+        left: 10px
+        top: 10px
+        width: 3rem
+        height: 3rem
+        background-color: $color-red
         border: none
-        background: transparent
+        border-radius: 50%
         cursor: pointer
-        letter-spacing: 2px
-        font-size: 1.2rem
-        font-weight: 900
 
 .card__title
     margin-bottom: 10px
-    font-size: 1.6rem
+    font-size: 1.2rem
     font-weight: 900
 .card__position
     margin-bottom: 10px
@@ -132,3 +186,11 @@ ul
 
 .map__info__title
     font-size: 1.2rem
+.mapmarker
+    color: $color-yellow
+    font-size: 2rem
+.btnactive
+    cursor: pointer
+    color: #000
+
+

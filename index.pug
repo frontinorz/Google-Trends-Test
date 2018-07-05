@@ -6,21 +6,35 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', type='text/css', media='screen', href='style.css')
+
     //script(src='index.js')
 body
     #app
-        button.btn-setPosition(v-on:click="myPosition()") 我的位置
+        header
+            .maintitle 新竹 Ubike 站點查詢
+            .inputrow
+                button.btn-setPosition(v-on:click="myPosition()")
+                    i.icon-target.fa.fa-compass
+                    |  定位
+                input.input-search(placeholder="選擇站點" type="text" name="station" list="stationname" v-model="inputVal" )
+                datalist#stationname
+                    option(v-for="n in bikedata" :value="n.name")
+                button.btn-search(v-on:click="searchStation" v-bind:class="{btnactive: checkinput }" :disabled="!checkinput")
+                    i.fa.fa-search
         #map.map
-        ul.wrapper
-            li.card(v-for="n in bikedata")
-                .card__img__wrapper
-                    .card__overlay
-                        button 前往地圖
-                    img.card__img(:src="n.imgurl")
-                .card__info
-                    .card__title {{n.name}}
-                    .card__position {{n.position}}
-                    .card__bikenum 車柱數 : {{n.bikenum}}
+        section.station
+            .subtitle 站點總覽
+            ul.wrapper
+                li.card(v-for="n in bikedata")
+                    .card__img__wrapper
+                        .card__overlay
+                            button( v-on:click="setCenter(n.lat, n.lng)")
+                                i.mapmarker.fa.fa-map-marker
+                        img.card__img(:src="n.imgurl" onerror="this.style.content='圖片失效'")
+                    .card__info
+                        .card__title {{n.name}}
+                        .card__position {{n.position}}
+                        .card__bikenum 車柱數 : {{n.bikenum}}
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')

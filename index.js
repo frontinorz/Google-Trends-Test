@@ -44,7 +44,10 @@ const app = new Vue({
         ],
         map: {},
         infowindow: {},
-        contentString: `<div><h1>Some text here</h1></div>`
+        isMarkerCreated: false,
+        contentString: `<div><h1>Some text here</h1></div>`,
+        inputVal: "",
+        inputCheck: true
     },
     created: function () {
         this.datainit();
@@ -53,7 +56,12 @@ const app = new Vue({
         this.initmap();
     },
     updated: function () {
-        this.createMarker(this.bikedata);
+        if (!this.isMarkerCreated)this.createMarker(this.bikedata);
+    },
+    computed:{
+        checkinput: function () {
+            return this.bikedata.some(station => station.name === this.inputVal);
+        }
     },
     methods: {
         datainit: function () {
@@ -95,6 +103,7 @@ const app = new Vue({
             });
         },
         createMarker: function (datas) {
+            console.log("refresh");
             const self = this;
             datas.forEach(data => {
                 let lat = data.lat;
@@ -124,7 +133,7 @@ const app = new Vue({
                     self.infowindow.open(self.map, marker);
                 });
             });
-
+            this.isMarkerCreated = true;
         },
         myPosition: function () {
             const self = this;
@@ -151,6 +160,24 @@ const app = new Vue({
                     'Error: The Geolocation service failed.' :
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(self.map);
+            }
+        },
+        setCenter: function (lat,lng) {
+            this.map.setCenter({lat, lng});
+            this.map.setZoom(18);
+            document.getElementById('map').scrollIntoView();
+        },
+        imageError: function (a) {
+            console.log(a);
+        },
+        searchStation: function () {
+            if ($('.input-search').val()){
+                let ans = this.bikedata.find(station => station.name === $('.input-search').val());
+                this.map.setCenter({
+                    lat: ans.lat,
+                    lng: ans.lng
+                });
+                this.map.setZoom(18);
             }
         }
     }

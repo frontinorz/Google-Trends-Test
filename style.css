@@ -16,50 +16,109 @@ button {
   border: none;
   cursor: pointer; }
 
+input {
+  outline: none; }
+
 * {
   box-sizing: border-box; }
 
 body, html {
   width: 100%;
   margin: 0;
-  padding: 20px 0px;
-  font-family: '微軟正黑體'; }
+  font-family: '微軟正黑體';
+  font-size: 16px; }
+  @media (min-width: 1440px) {
+    body, html {
+      font-size: 16px; } }
+  @media (max-width: 599px) {
+    body, html {
+      font-size: 12px; } }
+
+* {
+  box-sizing: border-box; }
+
+header {
+  width: 100%;
+  height: 30vh;
+  background: #eaa81b;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  align-items: center;
+  justify-content: center; }
+
+.inputrow {
+  display: grid;
+  align-self: start;
+  grid-template-columns: 1fr 4fr 1fr;
+  width: 100%;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 5px; }
+
+.btn-setPosition {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.icon-target {
+  font-size: 1.5rem; }
+
+.btn-search {
+  font-size: 1.2rem;
+  color: #bbb;
+  transition: color 0.3s;
+  cursor: initial; }
+
+.input-search {
+  height: 100%;
+  padding: 5px 10px;
+  font-size: 1.2rem; }
+
+.maintitle {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px; }
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 50px; }
 
 .map {
   width: 100%;
-  height: 500px;
+  height: 70vh;
   background: #aaa; }
 
 .info {
   display: grid; }
 
-* {
-  box-sizing: border-box; }
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
+.station {
+  max-width: calc(90%-20px);
+  padding: 50px 200px;
+  text-align: center; }
+  @media (min-width: 1440px) {
+    .station {
+      padding: 50px 200px; } }
+  @media (max-width: 1280px) {
+    .station {
+      padding: 50px 100px; } }
+  @media (max-width: 900px) {
+    .station {
+      padding: 50px 50px; } }
+  @media (max-width: 599px) {
+    .station {
+      padding: 50px 20px; } }
 
 .wrapper {
-  max-width: calc(90%-20px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 20px 200px;
   grid-gap: 20px; }
-  @media (min-width: 1440px) {
-    .wrapper {
-      padding: 20px 200px; } }
-  @media (max-width: 1280px) {
-    .wrapper {
-      padding: 20px 100px; } }
   @media (max-width: 900px) {
     .wrapper {
-      padding: 20px 50px;
       grid-template-columns: minmax(300px, 1fr); } }
-  @media (max-width: 599px) {
-    .wrapper {
-      padding: 20px 20px; } }
 
 .card {
   display: grid;
@@ -67,10 +126,11 @@ ul {
   overflow: hidden;
   text-align: center; }
   .card:hover .card__overlay {
-    transform: translateY(0%); }
+    background: rgba(0, 0, 0, 0.2); }
   @media (max-width: 900px) {
     .card {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 2fr;
+      height: 200px;
       border-bottom: none;
       border-right: 5px solid #eaa81b; } }
 
@@ -81,7 +141,8 @@ ul {
   @media (max-width: 900px) {
     .card__info {
       border: 1px solid #aaa;
-      text-align: left; } }
+      text-align: left;
+      padding: 10px; } }
 
 .card__img__wrapper {
   position: relative;
@@ -102,23 +163,26 @@ ul {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(234, 168, 27, 0.5);
+  background: rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s;
-  transform: translateY(100%); }
+  transition: background 0.3s; }
   .card__overlay button {
+    position: absolute;
+    outline: none;
+    left: 10px;
+    top: 10px;
+    width: 3rem;
+    height: 3rem;
+    background-color: #fe5f55;
     border: none;
-    background: transparent;
-    cursor: pointer;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-    font-weight: 900; }
+    border-radius: 50%;
+    cursor: pointer; }
 
 .card__title {
   margin-bottom: 10px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 900; }
 
 .card__position {
@@ -126,3 +190,11 @@ ul {
 
 .map__info__title {
   font-size: 1.2rem; }
+
+.mapmarker {
+  color: #eaa81b;
+  font-size: 2rem; }
+
+.btnactive {
+  cursor: pointer;
+  color: #000; }
