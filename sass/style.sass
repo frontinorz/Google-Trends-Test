@@ -24,7 +24,6 @@ ul
     padding: 0
     list-style: none
 a
-    text-decoration: none
     color: black
 p
     margin: 0
@@ -47,10 +46,6 @@ body,html
     @include breakpoint(phone)
         font-size: 12px
 
-*
-    box-sizing: border-box
-
-
 header
     width: 100%
     height: 30vh
@@ -60,6 +55,7 @@ header
     grid-template-rows: 2fr 1fr
     align-items: center
     justify-content: center
+    padding: 20px
 .inputrow
     display: grid
     align-self: start
@@ -88,6 +84,8 @@ header
     font-size: 3rem
     font-weight: 900
     letter-spacing: 2px
+    @include breakpoint(tablet)
+        font-size: 2.5rem
 .subtitle
     font-size: 2rem
     font-weight: 900
@@ -193,4 +191,12 @@ header
     cursor: pointer
     color: #000
 
-
+.foot
+    font-size: 1.2rem
+    display: grid
+    align-content: center
+    justify-content: center
+    margin-top: 50px
+    width: 100%
+    height: 10vh
+    background: $color-yellow

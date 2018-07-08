@@ -5,7 +5,6 @@ ul {
   list-style: none; }
 
 a {
-  text-decoration: none;
   color: black; }
 
 p {
@@ -34,9 +33,6 @@ body, html {
     body, html {
       font-size: 12px; } }
 
-* {
-  box-sizing: border-box; }
-
 header {
   width: 100%;
   height: 30vh;
@@ -45,7 +41,8 @@ header {
   display: grid;
   grid-template-rows: 2fr 1fr;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  padding: 20px; }
 
 .inputrow {
   display: grid;
@@ -80,6 +77,9 @@ header {
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 2px; }
+  @media (max-width: 900px) {
+    .maintitle {
+      font-size: 2.5rem; } }
 
 .subtitle {
   font-size: 2rem;
@@ -198,3 +198,13 @@ header {
 .btnactive {
   cursor: pointer;
   color: #000; }
+
+.foot {
+  font-size: 1.2rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+  height: 10vh;
+  background: #eaa81b; }

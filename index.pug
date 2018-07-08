@@ -6,8 +6,6 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', type='text/css', media='screen', href='style.css')
-
-    //script(src='index.js')
 body
     #app
         header
@@ -35,8 +33,13 @@ body
                         .card__title {{n.name}}
                         .card__position {{n.position}}
                         .card__bikenum 車柱數 : {{n.bikenum}}
+        footer.foot
+            p 資料來源 :
+                span
+                    a(href="http://opendata.hccg.gov.tw/" target="_blank")  新竹市開放資料平台
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg-SqPymvYnN9uBRZlJ267CqTOrWOL4U8&&libraries")
+    script(type="text/javascript" src="./bikedatas.json")
     script(src='index.js')
