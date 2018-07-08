@@ -12,7 +12,7 @@
     <header>
       <div class="maintitle">新竹 Ubike 站點查詢</div>
       <div class="inputrow">
-        <button class="btn-setPosition" v-on:click="myPosition()"><i class="icon-target fa fa-compass"></i> 定位</button>
+        <button class="btn-setPosition" v-on:click="myPosition()"><i class="icon-target fa fa-compass"></i></button>
         <input class="input-search" placeholder="選擇站點" type="text" name="station" list="stationname" v-model="inputVal">
         <datalist id="stationname">
           <option v-for="n in bikedata" :value="n.name"></option>
@@ -27,13 +27,14 @@
         <li class="card" v-for="n in bikedata">
           <div class="card__img__wrapper">
             <div class="card__overlay">
-              <button v-on:click="setCenter(n.lat, n.lng)"><i class="mapmarker fa fa-map-marker"></i></button>
-            </div><img class="card__img" :src="n.imgurl" onerror="this.style.content='圖片失效'">
+              <button class="btn-map" v-on:click="setCenter(n.lat, n.lng)"><i class="mapmarker fa fa-map-marker"></i></button>
+            </div><img class="card__img" :src="n.imgurl">
           </div>
           <div class="card__info">
             <div class="card__title">{{n.name}}</div>
             <div class="card__position">{{n.position}}</div>
             <div class="card__bikenum">車柱數 : {{n.bikenum}}</div>
+            <button class="btn-map-mobile" v-on:click="setCenter(n.lat, n.lng)"><i class="mapmarker fa fa-map-marker"></i></button>
           </div>
         </li>
       </ul>

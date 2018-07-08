@@ -13,7 +13,7 @@ body
             .inputrow
                 button.btn-setPosition(v-on:click="myPosition()")
                     i.icon-target.fa.fa-compass
-                    |  定位
+
                 input.input-search(placeholder="選擇站點" type="text" name="station" list="stationname" v-model="inputVal" )
                 datalist#stationname
                     option(v-for="n in bikedata" :value="n.name")
@@ -26,13 +26,15 @@ body
                 li.card(v-for="n in bikedata")
                     .card__img__wrapper
                         .card__overlay
-                            button( v-on:click="setCenter(n.lat, n.lng)")
+                            button.btn-map( v-on:click="setCenter(n.lat, n.lng)")
                                 i.mapmarker.fa.fa-map-marker
-                        img.card__img(:src="n.imgurl" onerror="this.style.content='圖片失效'")
+                        img.card__img(:src="n.imgurl")
                     .card__info
                         .card__title {{n.name}}
                         .card__position {{n.position}}
                         .card__bikenum 車柱數 : {{n.bikenum}}
+                        button.btn-map-mobile( v-on:click="setCenter(n.lat, n.lng)")
+                            i.mapmarker.fa.fa-map-marker
         footer.foot
             p 資料來源 :
                 span
