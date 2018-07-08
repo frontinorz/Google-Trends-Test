@@ -140,11 +140,16 @@ header {
   padding: 20px;
   height: 100%;
   border-left: 1px solid #aaa;
-  border-right: 1px solid #aaa; }
+  border-right: 1px solid #aaa;
+  border-top: none;
+  border-bottom: none; }
   @media (max-width: 900px) {
     .card__info {
       height: 150px;
-      border: 1px solid #aaa;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #aaa;
+      border-right: none;
+      border-left: none;
       text-align: left;
       padding: 10px; } }
 
