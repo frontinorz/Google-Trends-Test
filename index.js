@@ -7,7 +7,7 @@ const app = new Vue({
         map: {},
         infowindow: {},
         isMarkerCreated: false,
-        contentString: `<div><h1>Some text here</h1></div>`,
+        scrollTop: false,
         inputVal: "",
         inputCheck: true
     },
@@ -16,6 +16,7 @@ const app = new Vue({
     },
     mounted: function(){
         this.initmap();
+        $(window).scroll(() => {this.checkScrollTop();});
     },
     updated: function () {
         if (!this.isMarkerCreated)this.createMarker(this.bikedata);
@@ -24,6 +25,7 @@ const app = new Vue({
         checkinput: function () {
             return this.bikedata.some(station => station.name === this.inputVal);
         }
+
     },
     methods: {
         datainit: function () {
@@ -63,7 +65,7 @@ const app = new Vue({
             };
             this.map = new google.maps.Map(document.getElementById('map'), options);
             self.infowindow = new google.maps.InfoWindow({
-                content : self.contentString,
+                content : "",
                 maxWidth: 350
             });
         },
@@ -91,7 +93,8 @@ const app = new Vue({
                 marker.addListener('click', function () {
                     let html =
                         `<div class="map__info">
-                            <div class="map__info__title">${data.name}</div>
+                            <p class="map__info__title">${data.name}</p>
+                            <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=youbike${data.name}">在 Google 地圖上查看
                         </div>`;
 
                     self.infowindow.setContent(html);
@@ -144,6 +147,14 @@ const app = new Vue({
                 });
                 this.map.setZoom(18);
             }
+        },
+        checkScrollTop: function () {
+            // window.addEventListener('scroll', function (params) {
+            //     self.scrollTop = this.window.pageYOffset;
+            //     console.log(self.scrollTop);
+            // });
+            console.log($(window).scrollTop());
+            this.scrollTop = $(window).scrollTop() > 300 ? true : false;
         }
     }
 });

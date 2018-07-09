@@ -1,10 +1,11 @@
 doctype html
 head
     meta(charset='UTF-8')
-    title MITALENT
+    title 新竹Youbike站點查詢
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel="icon" type="image/png" href="images/icon.png")
     link(rel='stylesheet', type='text/css', media='screen', href='style.css')
 body
     #app
@@ -39,6 +40,8 @@ body
             p 資料來源 :
                 span
                     a(href="http://opendata.hccg.gov.tw/" target="_blank")  新竹市開放資料平台
+        a.btn-toTop(href="#app" v-show="scrollTop")
+            i.fa.fa-arrow-up
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')

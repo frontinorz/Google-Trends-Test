@@ -1,5 +1,6 @@
 $color-yellow: #eaa81b
 $color-red: #fe5f55
+$color-link: #427fed
 
 $padding-desktop: 100px
 $padding-desktop-lg: 200px
@@ -27,7 +28,8 @@ ul
     padding: 0
     list-style: none
 a
-    color: black
+    color: $color-link
+    text-decoration: none
 p
     margin: 0
 button
@@ -127,8 +129,6 @@ header
     overflow: hidden
     text-align: center
     &:hover
-        .card__overlay
-            background: rgba(0,0,0,0.2)
     @include breakpoint(tablet)
         grid-template-columns: 1fr 2fr
         height: 150px
@@ -168,11 +168,7 @@ header
     position: absolute
     width: 100%
     height: 100%
-    background: rgba(0,0,0,0.0)
-    display: flex
-    align-items: center
-    justify-content: center
-    transition: background 0.3s
+
 .btn-map
     position: absolute
     outline: none
@@ -209,14 +205,27 @@ header
 
 
 .map__info__title
-    font-size: 1.2rem
+    font-weight: 900
+    margin-bottom: 10px
 .mapmarker
     color: $color-yellow
     font-size: 2rem
 .btnactive
     cursor: pointer
     color: #000
-
+.btn-toTop
+    display: flex
+    align-items: center
+    justify-content: center
+    position: fixed
+    font-size: 1.2rem
+    width: 3rem
+    height: 3rem
+    bottom: 20px
+    right: 20px
+    border-radius: 50%
+    color: #eee
+    background: $color-link
 .foot
     font-size: 1.2rem
     display: grid
