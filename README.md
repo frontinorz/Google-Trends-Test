@@ -6,7 +6,7 @@
   
   https://frontinorz.github.io/Google-map/
 
-## Buid with
+## Build with
 
 1. Vue.js
 2. HTML5 Geolocation
