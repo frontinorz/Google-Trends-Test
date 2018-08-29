@@ -10,4 +10,4 @@
 
 1. Vue.js
 2. HTML5 Geolocation
-3. [Google Map API](https://developers.google.com/maps/documentation)
+3. [Google Maps API](https://developers.google.com/maps/documentation)
