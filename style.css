@@ -36,14 +36,28 @@ body, html {
 
 header {
   width: 100%;
-  height: 30vh;
-  background: #eaa81b;
+  height: 40vh;
+  position: relative;
+  background: transparent;
   text-align: center;
   display: grid;
   grid-template-rows: 2fr 1fr;
   align-items: center;
   justify-content: center;
   padding: 20px; }
+
+.bgp {
+  position: fixed;
+  width: 100%;
+  height: 40vh;
+  top: 0;
+  left: 0;
+  background-color: #eaa81b;
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  filter: blur(2px) brightness(50%);
+  z-index: -5; }
 
 .inputrow {
   display: grid;
@@ -75,9 +89,11 @@ header {
   font-size: 1.2rem; }
 
 .maintitle {
+  position: relative;
   font-size: 3rem;
   font-weight: 900;
-  letter-spacing: 2px; }
+  letter-spacing: 5px;
+  color: #fff; }
   @media (max-width: 900px) {
     .maintitle {
       font-size: 2.5rem; } }
@@ -98,6 +114,7 @@ header {
 
 .station {
   max-width: calc(90%-20px);
+  background-color: #fff;
   padding: 50px 200px;
   text-align: center; }
   @media (min-width: 1440px) {
@@ -170,25 +187,27 @@ header {
 .card__overlay {
   position: absolute;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fe5f55cf;
+  cursor: pointer;
+  opacity: 0; }
+  .card__overlay:hover {
+    opacity: 1; }
+  @media (max-width: 900px) {
+    .card__overlay {
+      display: none; } }
 
 .btn-map {
-  position: absolute;
-  outline: none;
-  left: 10px;
-  top: 10px;
   width: 3rem;
   height: 3rem;
-  background-color: #fe5f55;
+  background: transparent;
   border: none;
-  border-radius: 50%;
-  cursor: pointer; }
-  @media (min-width: 901px) {
-    .btn-map {
-      display: block; } }
-  @media (max-width: 900px) {
-    .btn-map {
-      display: none; } }
+  border-radius: 50%; }
+  .btn-map .mapmarker {
+    font-size: 5rem; }
 
 .btn-map-mobile {
   position: absolute;
@@ -239,6 +258,7 @@ header {
 
 .foot {
   font-size: 1.2rem;
+  font-weight: bold;
   display: grid;
   align-content: center;
   justify-content: center;

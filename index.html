@@ -2,6 +2,9 @@
 <head>
   <meta charset="UTF-8">
   <title>新竹Youbike站點查詢</title>
+  <meta name="author" content="Brice Wen">
+  <meta name="copyright" content="Brice Wen">
+  <meta name="description" content="隨身定位，快速找出身邊最近的Youbike站點">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,6 +14,7 @@
 <body>
   <div id="app">
     <header>
+      <div class="bgp"></div>
       <div class="maintitle">新竹 Ubike 站點查詢</div>
       <div class="inputrow">
         <button class="btn-setPosition" v-on:click="myPosition()"><i class="icon-target fa fa-compass"></i></button>
@@ -27,8 +31,8 @@
       <ul class="wrapper">
         <li class="card" v-for="n in bikedata">
           <div class="card__img__wrapper">
-            <div class="card__overlay">
-              <button class="btn-map" v-on:click="setCenter(n.lat, n.lng)"><i class="mapmarker fa fa-map-marker"></i></button>
+            <div class="card__overlay" v-on:click="setCenter(n.lat, n.lng)">
+              <button class="btn-map"><i class="mapmarker fa fa-map-marker"></i></button>
             </div><img class="card__img" :src="n.imgurl">
           </div>
           <div class="card__info">

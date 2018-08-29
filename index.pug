@@ -2,6 +2,9 @@ doctype html
 head
     meta(charset='UTF-8')
     title 新竹Youbike站點查詢
+    meta(name="author" content="Brice Wen")
+    meta(name="copyright" content="Brice Wen")
+    meta(name="description" content="隨身定位，快速找出身邊最近的Youbike站點")
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
@@ -10,6 +13,7 @@ head
 body
     #app
         header
+            .bgp
             .maintitle 新竹 Ubike 站點查詢
             .inputrow
                 button.btn-setPosition(v-on:click="myPosition()")
@@ -26,8 +30,8 @@ body
             ul.wrapper
                 li.card(v-for="n in bikedata")
                     .card__img__wrapper
-                        .card__overlay
-                            button.btn-map( v-on:click="setCenter(n.lat, n.lng)")
+                        .card__overlay( v-on:click="setCenter(n.lat, n.lng)")
+                            button.btn-map
                                 i.mapmarker.fa.fa-map-marker
                         img.card__img(:src="n.imgurl")
                     .card__info

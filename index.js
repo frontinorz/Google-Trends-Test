@@ -149,11 +149,6 @@ const app = new Vue({
             }
         },
         checkScrollTop: function () {
-            // window.addEventListener('scroll', function (params) {
-            //     self.scrollTop = this.window.pageYOffset;
-            //     console.log(self.scrollTop);
-            // });
-            console.log($(window).scrollTop());
             this.scrollTop = $(window).scrollTop() > 300 ? true : false;
         }
     }

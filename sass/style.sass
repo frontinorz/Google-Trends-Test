@@ -53,14 +53,27 @@ body,html
 
 header
     width: 100%
-    height: 30vh
-    background: $color-yellow
+    height: 40vh
+    position: relative
+    background: transparent
     text-align: center
     display: grid
     grid-template-rows: 2fr 1fr
     align-items: center
     justify-content: center
     padding: 20px
+.bgp
+    position: fixed
+    width: 100%
+    height: 40vh
+    top: 0
+    left: 0
+    background-color: $color-yellow
+    background-image: url('images/bg.jpg')
+    background-size: cover
+    background-position: center center
+    filter: blur(2px) brightness(50%)
+    z-index: -5
 .inputrow
     display: grid
     align-self: start
@@ -86,9 +99,11 @@ header
     padding: 5px 10px
     font-size: 1.2rem
 .maintitle
+    position: relative
     font-size: 3rem
     font-weight: 900
-    letter-spacing: 2px
+    letter-spacing: 5px
+    color: #fff
     @include breakpoint(tablet)
         font-size: 2.5rem
 .subtitle
@@ -105,6 +120,7 @@ header
     display: grid
 .station
     max-width: calc(90%-20px)
+    background-color: #fff
     padding: 50px $padding-desktop-lg
     text-align: center
     @include breakpoint(desktop-lg)
@@ -168,22 +184,27 @@ header
     position: absolute
     width: 100%
     height: 100%
-
-.btn-map
-    position: absolute
-    outline: none
-    left: 10px
-    top: 10px
-    width: 3rem
-    height: 3rem
-    background-color: $color-red
-    border: none
-    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    background: #fe5f55cf
     cursor: pointer
-    @include breakpoint(desktop-revert)
-        display: block
+    opacity: 0
+    &:hover
+        opacity: 1
     @include breakpoint(tablet)
         display: none
+
+.btn-map
+    width: 3rem
+    height: 3rem
+    background: transparent
+    border: none
+    border-radius: 50%
+    .mapmarker
+        font-size: 5rem
+
+
 .btn-map-mobile
     position: absolute
     bottom: 0
@@ -228,6 +249,7 @@ header
     background: $color-link
 .foot
     font-size: 1.2rem
+    font-weight: bold
     display: grid
     align-content: center
     justify-content: center
